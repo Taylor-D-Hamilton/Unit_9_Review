@@ -22,9 +22,7 @@
    <link href="rb_styles2.css" rel="stylesheet" />
    <link href="rb_forms2.css" rel="stylesheet" />
    <link href="rb_validate.css" rel="stylesheet" />
-   <script src="rb_formsubmit2.js">
-      var x = 6;
-   </script>
+   <script src="rb_formsubmit2.js"></script>
 </head>
 
 <body>
@@ -54,12 +52,33 @@
       <form action="http://www.example.com/redball/customer" method="post">
          <div class="formRow">
             <label for="nameBox">Name*</label>
-            <input name="custName" id="nameBox" type="text" placeholder="First and Last Name" required />
+            <input name="custName" required id="nameBox" type="text" placeholder="First and Last Name" required />
          </div>
          <div class="formRow">
             <label for="phoneBox">Phone Number</label>
-            <input name="custPhone" pattern=”^\d{10}$|^(\(\d{3}\)\s*)?\d{3}[\s-]?\d{4}$” id="phoneBox" type="tel"
-               placeholder="(nnn) nnn-nnnn" />
+            <input name="custPhone" required pattern=”^\d{10}$|^(\(\d{3}\)\s*)?\d{3}[\s-]?\d{4}$” id="phoneBox"
+               type="tel" placeholder="(nnn) nnn-nnnn" />
+         </div>
+         <div class="formRow">
+         <input name="orderType" id="delivery" type="radio" checked>
+         <label for="delivery">Delivery</label>
+         <input name="orderType" id="pickup" type="radio">
+         <label for="pickup">Pickup</label>
+         </div>
+         <fieldset id="deliveryInfo">
+            <legend>Delivery Options</legend>
+            <textarea id="addressBox" name="delAddress" placeholder="Enter delivery address"></textarea>
+            <label for="delBox">Delivery Time (leave blank for earliest delivery)</label>
+            <input id="delBox" name="delTime" type="time">
+         </fieldset>
+         <fieldset id="pickupInfo">
+            <legend>Pickup Options</legend>
+            <label for="pickupBox">Pickup Time (leave blank for earliest pickup)</label>
+            <input id="pickupBox" name="pickupTime" disabled type="time">
+         </fieldset>
+
+         <div id="buttons">
+            <input type="submit" value="Begin Building your Order" />
          </div>
       </form>
 
